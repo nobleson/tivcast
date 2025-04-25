@@ -25,6 +25,7 @@ import NextVideo from 'next-video'
 import sample from "#videos/sample.mp4"
 import TivcastPlayer from 'app/mux/player/tivcast-player'
 import Player from 'app/mux/player/mux-player'
+import PlayingComponent from '#components/stream/PlayingComponent'
 
 interface StreamProps{
     source?: string,
@@ -54,19 +55,20 @@ const LiveStream = ({
   }, [streamUrl]);
   return (
     <Box>
-      <LiveSection source={streamUrl}/>
+      <LiveSection source={streamUrl} streamId={slug}/>
     </Box>
   )
 }
-const LiveSection: React.FC<StreamProps> = ({source}) => {
+const LiveSection: React.FC<StreamProps> = ({source, streamId}) => {
   return (
     <Box>
     <BackgroundGradient height="100%" zIndex="-1" />
     <Container maxW="container.xl" pt={{ base: 40, lg: 60 }} pb="40">
       <Stack direction={{ base: 'column', lg: 'row' }} alignItems="center">
         <VStack align="stretch" justifyContent="stretch"  flex="1">
-              <NextVideo as={TivcastPlayer} src={source} /> 
+              {/* <NextVideo as={TivcastPlayer} src={source} />  */}
               {/* <NextVideo as={Player} src={source} /> */}
+              <PlayingComponent slug={streamId} />
          </VStack>
       </Stack>
       </Container>

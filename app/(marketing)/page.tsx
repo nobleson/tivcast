@@ -44,7 +44,11 @@ import { Faq } from '#components/faq'
 import { Features } from '#components/features'
 import { BackgroundGradient } from '#components/gradients/background-gradient'
 import { Hero } from '#components/hero'
-import WatchForm from '#components/form/watch-form'
+//import WatchForm from '#components/form/watch-form'
+import dynamic from 'next/dynamic';
+const WatchForm = dynamic(() => import('#components/form/watch-form'), {
+    ssr: false // This ensures the component is not SSR'd
+});
 import {
   Highlights,
   HighlightsItem,
@@ -62,6 +66,7 @@ import NextVideo from 'next-video'
 import sample from "#videos/sample.mp4"
 import TivcastPlayer from 'app/mux/player/tivcast-player'
 import Player from 'app/mux/player/mux-player'
+import PublishingComponent from  "#components/stream/PublishingComponent"
 
 /* export const meta: Metadata = {
   title: 'Tivcast | Home',
@@ -79,7 +84,7 @@ const Home: NextPage = () => {
 
       {/* <TestimonialsSection /> */}
 
-      {/* <PricingSection /> */}
+      <PricingSection />
 
       {/* <FaqSection /> */}
     </Box>
@@ -454,7 +459,8 @@ const PricingSection = () => {
   return (
           <VStack align="stretch" justifyContent="stretch" spacing={2}  flex="1">
               {/* <NextVideo as={TivcastPlayer} src={sample} /> */}
-              <NextVideo as={Player} src={sample} />
+              {/* <NextVideo as={Player} src={sample} /> */}
+              <PublishingComponent />
            </VStack>
   )
 }
