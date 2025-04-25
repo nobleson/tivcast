@@ -66,8 +66,10 @@ import NextVideo from 'next-video'
 import sample from "#videos/sample.mp4"
 import TivcastPlayer from 'app/mux/player/tivcast-player'
 import Player from 'app/mux/player/mux-player'
-import PublishingComponent from  "#components/stream/PublishingComponent"
-
+//import PublishingComponent from  "#components/stream/PublishingComponent"
+const PublishingComponent = dynamic(() => import('#components/stream/PublishingComponent'), {
+  ssr: false // This ensures the component is not SSR'd
+});
 /* export const meta: Metadata = {
   title: 'Tivcast | Home',
   description: 'Streaming App',

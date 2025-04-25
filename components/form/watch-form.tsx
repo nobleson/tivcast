@@ -19,8 +19,9 @@ import {
     }
 
     const handleWatchAction = (streamId) =>{
-        //let url =  window.location.href + '/livestream/'+streamId
-        router.push('/livestream/'+streamId, undefined)
+
+        let url =  window.location.href + '/livestream/'+streamId
+        router.push(url, undefined)
     }
   
     return (

@@ -25,7 +25,11 @@ import NextVideo from 'next-video'
 import sample from "#videos/sample.mp4"
 import TivcastPlayer from 'app/mux/player/tivcast-player'
 import Player from 'app/mux/player/mux-player'
-import PlayingComponent from '#components/stream/PlayingComponent'
+import dynamic from 'next/dynamic';
+//import PlayingComponent from '#components/stream/PlayingComponent'
+const PlayingComponent = dynamic(() => import('#components/stream/PlayingComponent'), {
+  ssr: false // This ensures the component is not SSR'd
+});
 
 interface StreamProps{
     source?: string,

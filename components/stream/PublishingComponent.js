@@ -30,7 +30,7 @@ const PublishingComponent = () => {
 
       useEffect(() => {
         webRTCAdaptor.current = new WebRTCAdaptor({
-          websocket_url: 'wss://63.178.3.79:/WebRTCApp/websocket',
+          websocket_url: 'wss://63.178.3.79:5443/WebRTCApp/websocket',
           mediaConstraints: {
             video: true,
             audio: true,
